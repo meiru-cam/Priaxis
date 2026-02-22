@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="apple-touch-icon" href="/logo-192.png" />
+  <meta name="theme-color" content="#8b5cf6" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Priaxis</title>
+  <script>
+    // Prevent theme flash by setting initial theme before React loads
+    (function () {
+      try {
+        var stored = localStorage.getItem('uiSettings');
+        var theme = 'system';
+        if (stored) {
+          var parsed = JSON.parse(stored);
+          if (parsed.state && parsed.state.theme) {
+            theme = parsed.state.theme;
+          }
+        }
+        var isDark = theme === 'dark' ||
+          (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+        document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+        // Set initial background to prevent white flash
+        document.documentElement.style.background = isDark ? '#002b36' : '#fdf6e3';
+      } catch (e) { }
+    })();
+  </script>
+  <style>
+    /* Prevent FOUC */
+    html {
+      background: #002b36;
+    }
+
+    html[data-theme="light"] {
+      background: #fdf6e3;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>
