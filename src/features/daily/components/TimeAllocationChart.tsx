@@ -7,6 +7,8 @@ import { useTranslation } from '../../../lib/i18n/useTranslation';
 const ChartContainer = styled.div`
   width: 100%;
   height: 300px;
+  box-sizing: border-box;
+  min-width: 0;
   background: ${({ theme }) => theme.colors.bg.secondary};
   border: 1px solid ${({ theme }) => theme.colors.border.secondary};
   border-radius: 12px;

@@ -174,7 +174,7 @@ const TaskSection = styled.section`
 
 const ChartsRow = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 26px;
   margin-bottom: 24px;
 
@@ -452,7 +452,7 @@ export function DailyPage() {
         completingTask.id,
         reviewData.review,
         reviewData.actualEnergy,
-        reviewData.actualTime !== undefined ? Math.round(reviewData.actualTime * 60) : undefined,
+        reviewData.actualTime,
         reviewData.satisfaction
       );
 

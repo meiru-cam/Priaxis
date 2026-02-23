@@ -9,6 +9,8 @@ import type { TranslationKey } from '../../../lib/i18n/types';
 const ChartContainer = styled.div`
   width: 100%;
   height: 320px;
+  box-sizing: border-box;
+  min-width: 0;
   background: ${({ theme }) => theme.colors.bg.secondary};
   border: 1px solid ${({ theme }) => theme.colors.border.secondary};
   border-radius: 12px;
